@@ -31,7 +31,6 @@
 (defn ^SynonymMap make-syn-map [nyms]
   (let [m (SynonymMap$Builder. true)]
     (doseq [[from to] nyms]
-      (println (format "DEBUG: `%s' -> `%s'" from to))
       (.add m (make-ref from) (make-ref to) true))
     (.build m)))
 
