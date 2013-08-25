@@ -1,0 +1,65 @@
+/**
+ *
+ * eeeee eeeee eeeee  e   e
+ * 8   " 8   8 8   8  8   8
+ * 8eeee 8eee8 8eee8e 8eee8e
+ *    88 88  8 88   8 88   8
+ * 8ee88 88  8 88   8 88   8
+ *
+ * © Copyright 2013 Ian Eure.
+ * Author: Ian Eure <ian.eure@gmail.com>
+ */
+
+html, body {
+    width: 100%;
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+}
+html,
+input {
+    font-size: 36pt;
+}
+
+label {
+    margin-right: 1em;
+}
+
+form, ul {
+    width: 90%;
+    margin: auto;
+    display: relative;
+}
+
+#search {
+    display: none;
+}
+
+ul {
+    font-weight: lighter;
+    font-size: 24pt;
+    text-align: left;
+    margin-top: 1em;
+}
+
+#results.nil {
+    opacity: .5;
+}
+
+li:nth-child(odd) {
+    background-color: #eef7ee;
+}
+
+li a {
+    color: #454545;
+}
+
+input {
+    width: 90%;
+    line-height: 1em;
+}
+
+form {
+    position: relative;
+    padding: 0;
+}
+
