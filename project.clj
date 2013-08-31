@@ -7,10 +7,13 @@
                  [clj-http "0.7.6"]
                  [clucy "0.4.2-SNAPSHOT"]
                  [compojure "1.1.5"]
-                 [ring-middleware-format "0.3.1"]]
+                 [ring-middleware-format "0.3.1"]
+                 [ring/ring-jetty-adapter "1.2.0"]]
+  :aot :all
   :plugins [[lein-ring "0.8.6"]]
   :jvm-opts ["-Djava.awt.headless=true"] ; Fuk u osx
   :ring {:handler sark.api/handler
          :init sark.core/init
-         :auto-reload? true})
+         :auto-reload? true}
+  :main sark.cli)
 

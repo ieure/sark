@@ -19,37 +19,44 @@ function debounce(delay, handler) {
         if (timer) {
             window.clearTimeout(timer);
         }
-        timer = setTimeout(handler, delay);
+        timer = setTimeout(handler, delay, event);
     };
 };
 
-function initialize() {
-    // s.onkeydown = function(event) {
-    //     var state = getState();
-    //     hideLabel();
-    // };
-
-    $(s).focus();
-
-    s.onkeyup = searchEvent;
-
-    var form = document.getElementsByTagName("form")[0];
-    form.onsubmit = searchEvent;
-};
-
-function flush(node) {
-    while (node.childNodes.length >= 1) {
-        node.removeChild(node.firstChild);
+function hideLabel() {
+    if (s.value != "") {
+        $("label").hide();
+    } else {
+        $("label").show();
     }
 };
 
-function showLabel() {
-    document.getElementsByTagName("label")[0].style.display = "block";
+function parseSearch(searchString) {
+    var ss = searchString.substring(1).split("&")
+    var so = {}
+    for (var i in ss) {
+        var ssp = ss[i].split("=")
+        so[ssp[0]] = ssp[1];
+    }
+    return so;
 }
 
-function hideLabel() {
-    document.getElementsByTagName("label")[0].style.display = "none";
-}
+function initialize() {
+    $(s).bind("keydown", hideLabel).bind("keyup", hideLabel)
+        .bind("keyup", debounce(50, searchEvent))
+        .focus();
+
+    $("form").bind("submit", searchEvent);
+
+    if (window.location.search != "") {
+        var ss = parseSearch(window.location.search);
+        if (ss["s"] != "") {
+            s.value = ss["s"];
+            hideLabel();
+            searchFor(s.value);
+        }
+    }
+};
 
 
 // Searching
@@ -73,9 +80,11 @@ function searchSuccess(data, status, xhr) {
 
     $(results).empty().hide().removeClass("nil");
     for (i in data) {
-        $(results).append("<li><a href=\"" + data[i]["url"] + "\">" + data[i]["name"] + "</a>")
+        $(results).append("<li><a target=\"_new\" href=\"" + data[i]["url"] + "\">" + data[i]["name"] + "</a>")
     };
     $(results).show();
+    document.title = s.value + " - Sark";
+    history.pushState({}, document.title, "?s=" + s.value);
 };
 
 function searchError() {};

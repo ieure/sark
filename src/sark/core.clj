@@ -93,9 +93,11 @@
   (reset! index (build-index (fetch-index))))
 
 (defn search [index terms & [limit]]
-  (clucy/search index terms (or limit 100)
-                :default-operator :and))
+  (anal/with-standard-analyzer
+    (clucy/search index terms (or limit 100)
+                  :default-operator :and)))
 
 (defn explain [index terms & [limit]]
-  (clucy/search index terms (or limit 100)
-                :default-operator :and :explain true))
+  (anal/with-standard-analyzer
+    (clucy/search index terms (or limit 100)
+                  :default-operator :and :explain true)))
