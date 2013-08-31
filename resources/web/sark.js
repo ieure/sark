@@ -20,6 +20,8 @@ function debounce(delay, handler) {
             window.clearTimeout(timer);
         }
         timer = setTimeout(handler, delay, event);
+        event.stopPropagation();
+        return false;
     };
 };
 
@@ -36,14 +38,14 @@ function parseSearch(searchString) {
     var so = {}
     for (var i in ss) {
         var ssp = ss[i].split("=")
-        so[ssp[0]] = ssp[1];
+        so[ssp[0]] = decodeURIComponent(ssp[1]);
     }
     return so;
 }
 
 function initialize() {
     $(s).bind("keydown", hideLabel).bind("keyup", hideLabel)
-        .bind("keyup", debounce(50, searchEvent))
+        .bind("keyup", debounce(200, searchEvent))
         .focus();
 
     $("form").bind("submit", searchEvent);
@@ -67,9 +69,7 @@ function initialize() {
  * Updates title / state and fires off the search.
  */
 function searchEvent(event) {
-    event.stopPropagation();
     searchFor(s.value);
-    return false;
 };
 
 function searchSuccess(data, status, xhr) {
