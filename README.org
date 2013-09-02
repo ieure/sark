@@ -3,3 +3,15 @@
   Sark is a tool for searching the contents of [[http://arcarc.xmission.com][ArcArc]], the Arcade
   Archive. ArcArc has thousands of documents for coin-operated
   machines, and Sark makes it easy to find them.
+
+** Hacking on Sark
+
+   Sark depends on [[https://github.com/weavejester/clucy/pull/21][an unreleased snapshot of Clucy]], tagged as
+   =0.4.2-SNAPSHOT=. Other than that, it’s very
+   straightforward. You’ll need Leiningen 2.0 or better.
+
+   For development, it should be as simple as running =lein ring
+   server=. For running Sark in production, you can either build an
+   uberjar (=lein uberjar=) and run it with =java -jar
+   sark-alpha3-SNAPSHOT-standalone.jar=, or you can build a war (=lein
+   ring war=) and use your favorite servlet container.
