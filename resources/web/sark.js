@@ -10,7 +10,9 @@
  * Author: Ian Eure <ian.eure@gmail.com>
  */
 
+// Search form
 var s = document.getElementById("s");
+// Search results
 var results = document.getElementById("results");
 
 function debounce(delay, handler) {
@@ -100,7 +102,7 @@ function searchError() {};
  */
 function searchFor(text) {
     jQuery.ajax("/s?q=" + text,
-                {"async": false,
+                {"async": true,
                  "success": searchSuccess,
                  "error": searchError});
 };
