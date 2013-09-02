@@ -84,7 +84,9 @@ function searchSuccess(data, status, xhr) {
     };
     $(results).show();
     document.title = s.value + " - Sark";
-    history.pushState({}, document.title, "?s=" + s.value);
+    if (decodeURIComponent(document.location.search) != "?s=" + s.value) {
+        history.pushState({}, document.title, "?s=" + s.value);
+    }
 };
 
 function searchError() {};
