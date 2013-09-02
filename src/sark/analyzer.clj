@@ -33,6 +33,7 @@
 
 (def ^:constant nyms
   {
+   ;; Monitors
    "13k4705" "k4705",
    "13k4800" "k4800",
    "13k7201" "k7201",
@@ -83,14 +84,30 @@
    "7901" "k7901",
    "8104" "k8104",
 
+   ;; Games
    "dk" "donky kong",
    "dkjr" "donkey kong jr",
    "donkey kong jr" "dkjr",
    "donkey kong" "dk",
-   "dp" "schematic",
    "jnr" "junior",
    "jr" "junior",
    "junior" "jr",
+   "mk" "mortal kombat"
+   "umk" "ultimate mortal kombat"
+   "mk2" "mortal kombat 2"
+   "mk3" "mortal kombat 3"
+   "umk3" "ultimate mortal kombat 3"
+   "ki2" "killer instinct 2"
+   "mortal kombat" "mk"
+   "ultimate mortal kombat" "umk"
+   "mortal kombat 2" "mk2"
+   "mortal kombat 3" "mk3"
+   "ultimate mortal kombat 3" "umk3"
+   "killer instinct" "ki"
+   "killer instinct 2" "ki2"
+
+   ;; Manual types
+   "dp" "schematic",
    "sp" "schematic",
    "tm" "manual",
    })
