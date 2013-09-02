@@ -29,34 +29,29 @@
       (io/reader)
       (line-seq)))
 
-(def ^:constant shitposts
-  #{"arcade by title"
-    "pictures"
-    "utils"
-    "icons fonts etc"
-    "kits and hacks"
-    "magazines and books"
-    "pinball/pictures"
-    "videos and sounds"
-    "web archives"})
-
 (def ^:constant shitpost-re
+  "A regexp of files which won't be indexed."
   #"(^(arcade by title|pictures|utils|icons fonts etc|kits and hacks|magazines and books|pinball/pictures|videos and sounds|web archives).*|.*thumbs.db$|.*index.txt.*|)")
 
 (defn shitpost? [name]
+  "Is this file a shitpost?"
   (re-matches shitpost-re (str/lower-case name)))
 
 (defn clean-strip-punc [text]
+  "Strip underscores."
   (str/replace text #"_" " "))
 
 (defn clean-strip-extension [text]
+  "Strip file extensions."
   (let [li (.lastIndexOf text ".")]
     (subs text 0 (if  (> li 0) li (count text)))))
 
 (defn clean-fix-typos [text]
+  "Fix typos in ArcArc."
   (str/replace text #"[Cc]ab[ea]rat" "Cabaret"))
 
 (defn clean-strip-prefix [text]
+  "Strip the prefix for some types."
   (cond
    (.startsWith text "PDF") (let [li (.lastIndexOf text "/")]
                               (subs text (if (> li 0) (+ li 1) 0)))
@@ -64,6 +59,7 @@
    true text))
 
 (defn clean-name [name]
+  "Clean filename."
   (-> (clean-strip-punc name)
       (clean-strip-extension)
       (clean-fix-typos)
@@ -71,10 +67,12 @@
       (str/trim)))
 
 (defn boost [name]
+  "How much should we boost this document?"
   (cond (.startsWith name "PDF") 1.0
         true 0.0))
 
 (defn make-doc [name]
+  "Turn a filename into a document to index."
   (with-meta {:name (clean-name name), :url (str arcarc-base name)}
               {:url {:indexed false
                      :stored true}
@@ -90,6 +88,7 @@
      i))
 
 (defn init []
+  "Initialize the index."
   (reset! index (build-index (fetch-index))))
 
 (defn search [index terms & [limit]]
