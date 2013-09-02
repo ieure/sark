@@ -32,7 +32,8 @@ form > label {
     left: 1.5em;
 }
 
-form, ul {
+form,
+ul {
     width: 90%;
     margin: auto;
     display: relative;
@@ -49,17 +50,18 @@ ul {
     margin-top: 1em;
 }
 
-#results.nil {
+.nil {
     opacity: .5;
 }
 
-li:nth-child(odd) {
+#results li:nth-child(odd) {
     background-color: #eef7ee;
 }
 
 li a {
     color: #454545;
 }
+
 
 input {
     width: 90%;
@@ -71,3 +73,41 @@ form {
     padding: 0;
 }
 
+#help {
+    width: 75%;
+    margin: auto;
+    border: 1px solid #aaa;
+    padding: .5em;
+    border-radius: .25em;
+    text-align: left;
+    font-weight: lighter;
+    font-size: 18pt;
+    margin-top: 1em;
+}
+
+#help h1 {
+    font-size: 48pt;
+}
+
+#help img {
+    float: right;
+    margin: 0 0 1em 1em;
+}
+
+#help p {
+    margin-bottom: 1em;
+}
+
+#help ul {
+    width: 50%;
+    margin-left: 0;
+}
+
+#help li {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.clear {
+    clear: right;
+}

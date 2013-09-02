@@ -21,6 +21,9 @@ function debounce(delay, handler) {
         }
         timer = setTimeout(handler, delay, event);
         event.stopPropagation();
+        if (s.value != "") {
+            $("#help").hide();
+        }
         return false;
     };
 };
@@ -55,6 +58,7 @@ function initialize() {
         if (ss["s"] != "") {
             s.value = ss["s"];
             hideLabel();
+            $("#help").hide();
             searchFor(s.value);
         }
     }
