@@ -1,4 +1,4 @@
-(defproject sark "alpha 2"
+(defproject sark "alpha3-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
