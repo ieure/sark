@@ -1,0 +1,5 @@
+* Sark
+
+  Sark is a tool for searching the contents of [[http://arcarc.xmission.com][ArcArc]], the Arcade
+  Archive. ArcArc has thousands of documents for coin-operated
+  machines, and Sark makes it easy to find them.
