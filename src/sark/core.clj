@@ -4,30 +4,15 @@
 ;; Author: Ian Eure <ieure@simple.com>
 ;;
 (ns sark.core
-  (:require [clj-http.client :as client]
-            [clojure.string :as str]
-            [clojure.java.io :as io]
+  (:require [clojure.string :as str]
             [clucy.core :as clucy]
+            [sark.arcarc :as arcarc]
             [sark.analyzer :as anal])
   (:import [org.apache.lucene.queryparser.classic ParseException]))
 
 (def index (atom nil))
 
-(def ^:const arcarc-base "http://arcarc.xmission.com/")
-(def ^:const arcarc-index (format "%s/index.txt" arcarc-base))
 
-#_(defn fetch-index
-  "Fetch the ArcArc index, returning a seq of filenames."
-  []
-  (-> (client/get arcarc-index {:as :stream})
-      (:body)
-      (io/reader)
-      (line-seq)))
-
-(defn fetch-index []
-  (-> (io/resource "index.txt")
-      (io/reader)
-      (line-seq)))
 
 (def ^:constant shitpost-re
   "A regexp of files which won't be indexed."
@@ -73,7 +58,7 @@
 
 (defn make-doc [name]
   "Turn a filename into a document to index."
-  (with-meta {:name (clean-name name), :url (str arcarc-base name)}
+  (with-meta {:name (clean-name name), :url (str arcarc/base name)}
               {:url {:indexed false
                      :stored true}
                :name {:boost (boost name)}}))
@@ -89,7 +74,7 @@
 
 (defn init []
   "Initialize the index."
-  (reset! index (build-index (fetch-index))))
+  (reset! index (build-index @arcarc/state)))
 
 (defn search [index terms & [limit]]
   (anal/with-standard-analyzer

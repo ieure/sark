@@ -3956,6 +3956,8 @@ Web Archives/vectorlib.free.fr/RedBaron/index.html?D=A.html
 Web Archives/vectorlib.free.fr/RedBaron/index.html?D=D.html
 Web Archives/vectorlib.free.fr/SuperDonQuix.1.html
 Web Archives/vectorlib.free.fr/Pinball.1.html
+Web Archives/vectorlib.free.fr/RadarScope/jpg/radarscope_CPO_zorg.jpg
+Web Archives/vectorlib.free.fr/RadarScope/vect/radarscope_CPO_zorg.ai
 Web Archives/vectorlib.free.fr/Bubble_Bobble.1.html
 Web Archives/vectorlib.free.fr/Frogger.1.html
 Web Archives/vectorlib.free.fr/MrDO.1.html
@@ -4067,7 +4069,9 @@ Web Archives/vectorlib.free.fr/PumItUp.1.html
 Web Archives/vectorlib.free.fr/PacMan.1.html
 Web Archives/vectorlib.free.fr/MadDog.html
 Web Archives/vectorlib.free.fr/SegaRally/jpg/Sega_R&R_zorg.jpg
+Web Archives/vectorlib.free.fr/SegaRally/jpg/sega_rally_zorg.jpg
 Web Archives/vectorlib.free.fr/SegaRally/jpg/SegaRally_logo_zorg.jpg
+Web Archives/vectorlib.free.fr/SegaRally/vect/sega_rally_zorg.ai
 Web Archives/vectorlib.free.fr/SegaRally/vect/SegaRally_logo_zorg.pdf
 Web Archives/vectorlib.free.fr/SegaRally/vect/Sega_R&R_zorg.pdf
 Web Archives/vectorlib.free.fr/MajorHavoc.1.html
@@ -4587,6 +4591,7 @@ Web Archives/vectorlib.free.fr/WildWestern/index.html
 Web Archives/vectorlib.free.fr/WildWestern/vect/wild_western.ai
 Web Archives/vectorlib.free.fr/Lupin/jpg/lupin.jpg
 Web Archives/vectorlib.free.fr/Lupin/vect/lupin.svg
+Web Archives/vectorlib.free.fr/FixItFelix.html
 Web Archives/vectorlib.free.fr/Carnival.1.html
 Web Archives/vectorlib.free.fr/Vanguard/jpg/Vanguard_marquee_zorg.jpg
 Web Archives/vectorlib.free.fr/Vanguard/jpg/vanguard_bezel_zorg.jpg
@@ -5191,8 +5196,32 @@ Web Archives/vectorlib.free.fr/MadDog/jpg/MadDog_McCree_bezel_zorg.jpg
 Web Archives/vectorlib.free.fr/MadDog/vect/MadDog_McCree_bezel_zorg.ai
 Web Archives/vectorlib.free.fr/RocknRope.1.html
 Web Archives/vectorlib.free.fr/SmashTV/jpg/smash_tv_instructioncard_v2_2.jpg
+Web Archives/vectorlib.free.fr/SmashTV/jpg/Marquesina_35-02-final.jpg
+Web Archives/vectorlib.free.fr/SmashTV/jpg/CPO_25''_38-02-final.jpg
+Web Archives/vectorlib.free.fr/SmashTV/jpg/Sideart44-05_final_19''.jpg
+Web Archives/vectorlib.free.fr/SmashTV/jpg/Bezel_19''_Final_04-Version_1.jpg
+Web Archives/vectorlib.free.fr/SmashTV/jpg/Instrucciones_25''.jpg
+Web Archives/vectorlib.free.fr/SmashTV/jpg/bezel_25''_adapted.jpg
+Web Archives/vectorlib.free.fr/SmashTV/jpg/Pegatina_identificacion.jpg
+Web Archives/vectorlib.free.fr/SmashTV/jpg/Instrucciones_19''.jpg
+Web Archives/vectorlib.free.fr/SmashTV/jpg/CPO_19''_04-01-final.jpg
+Web Archives/vectorlib.free.fr/SmashTV/jpg/Sideart44-05_final_25''.jpg
+Web Archives/vectorlib.free.fr/SmashTV/jpg/Logo_Williams_25''.jpg
+Web Archives/vectorlib.free.fr/SmashTV/jpg/Bezel_19''_Final_04-Version_2.jpg
 Web Archives/vectorlib.free.fr/SmashTV/index.html
+Web Archives/vectorlib.free.fr/SmashTV/vect/Marquesina_35-02-final.FH11
+Web Archives/vectorlib.free.fr/SmashTV/vect/bezel_25''_adapted.FH11
+Web Archives/vectorlib.free.fr/SmashTV/vect/CPO_19''_04-01-final.FH11
+Web Archives/vectorlib.free.fr/SmashTV/vect/Pegatina_identificacion.FH11
+Web Archives/vectorlib.free.fr/SmashTV/vect/Instrucciones_25''.FH11
+Web Archives/vectorlib.free.fr/SmashTV/vect/CPO_25''_38-02-final.FH11
+Web Archives/vectorlib.free.fr/SmashTV/vect/Instrucciones_19''.FH11
+Web Archives/vectorlib.free.fr/SmashTV/vect/Logo_Williams_25''.FH11
+Web Archives/vectorlib.free.fr/SmashTV/vect/Sideart44-05_final_25''.zip
 Web Archives/vectorlib.free.fr/SmashTV/vect/smash_tv_instructioncard_v2_2.ai
+Web Archives/vectorlib.free.fr/SmashTV/vect/Sideart44-05_final_19''.zip
+Web Archives/vectorlib.free.fr/SmashTV/vect/Bezel_19''_Final_04-Version_2.FH11
+Web Archives/vectorlib.free.fr/SmashTV/vect/Bezel_19''_Final_04-Version_1.FH11
 Web Archives/vectorlib.free.fr/MultiPac.1.html
 Web Archives/vectorlib.free.fr/Romstar/jpg/romstarsideart.jpg
 Web Archives/vectorlib.free.fr/Romstar/vect/romstarsideart.ai
@@ -5273,6 +5302,8 @@ Web Archives/vectorlib.free.fr/Stargate.1.html
 Web Archives/vectorlib.free.fr/MoonWalker/jpg/moonwalker.jpg
 Web Archives/vectorlib.free.fr/MoonWalker/index.html
 Web Archives/vectorlib.free.fr/MoonWalker/vect/moonwalker.ai
+Web Archives/vectorlib.free.fr/FixItFelix/jpg/FF_sideart.jpg
+Web Archives/vectorlib.free.fr/FixItFelix/vect/FF_sideart.ai
 Web Archives/vectorlib.free.fr/RidgeRacer.1.html
 Web Archives/vectorlib.free.fr/Pengo/jpg/pengo1.jpg
 Web Archives/vectorlib.free.fr/Pengo/jpg/Pengo_marquee_2.jpg
@@ -5643,6 +5674,7 @@ Web Archives/vectorlib.free.fr/DonkeyKong/vect/dkcaberet.ai
 Web Archives/vectorlib.free.fr/DonkeyKong/vect/ddkheader.ai
 Web Archives/vectorlib.free.fr/DonkeyKong/vect/Donkey_Kong_Cocktail_Instruction_Card.ai
 Web Archives/vectorlib.free.fr/DonkeyKong/vect/DonkeyKongcpo_2.ai
+Web Archives/vectorlib.free.fr/RadarScope.html
 Web Archives/vectorlib.free.fr/PacManPlus.html
 Web Archives/vectorlib.free.fr/Alcon/jpg/alcon_marquee.jpg
 Web Archives/vectorlib.free.fr/Alcon/index.html
@@ -10114,10 +10146,12 @@ Web Archives/vectorlib2.free.fr/stickers/jpg/sega_warning_LB1102.jpg
 Web Archives/vectorlib2.free.fr/stickers/jpg/sega_warning.jpg
 Web Archives/vectorlib2.free.fr/stickers/jpg/17-red-warning1.jpg
 Web Archives/vectorlib2.free.fr/stickers/jpg/atari_warning.jpg
+Web Archives/vectorlib2.free.fr/stickers/jpg/Sellos_de_licencia Sega.jpg
 Web Archives/vectorlib2.free.fr/stickers/jpg/keihou_coin_stick_egret_II.jpg
 Web Archives/vectorlib2.free.fr/stickers/jpg/zaccaria-warning.jpg
 Web Archives/vectorlib2.free.fr/stickers/index.html
 Web Archives/vectorlib2.free.fr/stickers/vect/Namco_euro_coin_sticker.pdf
+Web Archives/vectorlib2.free.fr/stickers/vect/Sellos_de_licencia Sega.zip
 Web Archives/vectorlib2.free.fr/stickers/vect/donkey-kong-fcc.zip
 Web Archives/vectorlib2.free.fr/stickers/vect/Ultimate-Solution.ai
 Web Archives/vectorlib2.free.fr/stickers/vect/decaljamma.pdf
