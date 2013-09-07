@@ -12,8 +12,6 @@
 
 (def index (atom nil))
 
-
-
 (def ^:constant shitpost-re
   "A regexp of files which won't be indexed."
   #"(^(arcade by title|pictures|utils|icons fonts etc|kits and hacks|magazines and books|pinball/pictures|videos and sounds|web archives).*|.*thumbs.db$|.*index.txt.*|)")
