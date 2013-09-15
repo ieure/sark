@@ -86,7 +86,7 @@ function searchSuccess(data, status, xhr) {
 
     $(results).empty().hide().removeClass("nil");
     for (i in data) {
-        $(results).append("<li><a target=\"_new\" href=\"" + data[i]["url"] + "\">" + data[i]["name"] + "</a>")
+        $(results).append("<li><a target=\"_blank\" href=\"" + data[i]["url"] + "\">" + data[i]["name"] + "</a>")
     };
     $(results).show();
     document.title = s.value + " - Sark";
