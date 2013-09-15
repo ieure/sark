@@ -105,6 +105,7 @@
    "ultimate mortal kombat 3" "umk3"
    "killer instinct" "ki"
    "killer instinct 2" "ki2"
+   "q bert" "qbert"
 
    ;; Manual types
    "dp" "schematic",
