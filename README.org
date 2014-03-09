@@ -1,8 +1,14 @@
-* Sark
+#+BEGIN_SRC
+eeeee eeeee eeeee  e   e
+8   " 8   8 8   8  8   8
+8eeee 8eee8 8eee8e 8eee8e
+   88 88  8 88   8 88   8
+8ee88 88  8 88   8 88   8
+#+END_SRC
 
-  Sark is a tool for searching the contents of [[http://arcarc.xmission.com][ArcArc]], the Arcade
-  Archive. ArcArc has thousands of documents for coin-operated
-  machines, and Sark makes it easy to find them.
+Sark is a tool for searching the contents of [[http://arcarc.xmission.com][ArcArc]], the Arcade
+Archive. ArcArc has thousands of documents for coin-operated
+machines, and Sark makes it easy to find them.
 
 ** Hacking on Sark
 
