@@ -1,4 +1,4 @@
-(defproject sark "beta1-SNAPSHOT"
+(defproject sark "beta2-SNAPSHOT"
   :min-lein-version "2.0.0"
   :description "Sark, the searchable Arcade Archive"
   :url "http://github.com/ieure/sark"
