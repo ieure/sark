@@ -91,7 +91,7 @@
    "8104" "k8104",
 
    ;; Games
-   "dk" "donky kong",
+   "dk" "donkey kong",
    "dkjr" "donkey kong jr",
    "donkey kong jr" "dkjr",
    "donkey kong" "dk",
