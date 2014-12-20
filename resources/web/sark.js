@@ -6,7 +6,7 @@
  *    88 88  8 88   8 88   8
  * 8ee88 88  8 88   8 88   8
  *
- * © Copyright 2013 Ian Eure.
+ * © Copyright 2013, 2014 Ian Eure.
  * Author: Ian Eure <ian.eure@gmail.com>
  */
 
@@ -55,6 +55,8 @@ function initialize() {
 
     $("form").bind("submit", searchEvent);
 
+    $("#results").bind("click", resultClickEvent);
+
     if (window.location.search != "") {
         var ss = parseSearch(window.location.search);
         if (ss["s"] != "") {
@@ -95,7 +97,7 @@ function searchSuccess(data, status, xhr) {
     }
 };
 
-function searchError() {};
+function searchError() {}; // noop
 
 /**
  * Perform a search
@@ -112,6 +114,31 @@ function clearSearch() {
     document.getElementById("search").style.display = "none";
     showLabel();
     s.focus();
+};
+
+
+// Clicking
+
+function resultClickEvent(evt) {
+    if (evt.target.tagName.toLowerCase() == "a") {
+        click(evt.target.href);
+    }
+};
+
+function clickSuccess() {}; // Noop
+
+function clickError() {}; // Noop
+
+/**
+ * Record a click
+ */
+function click(doc) {
+    jQuery.ajax("/c?s=" + encodeURIComponent(s.value) +
+                "&d=" + encodeURIComponent(doc),
+                {"async": true,
+                 "type": "PUT",
+                 "success": clickSuccess,
+                 "error": clickError});
 };
 
 initialize();

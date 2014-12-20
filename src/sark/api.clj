@@ -16,6 +16,7 @@
         [ring.middleware.format-response :only [wrap-json-response]]
         [clojure.pprint :only [pprint]])
   (:require [sark.core :as sark]
+            [sark.meters :as meters]
             [clojure.java.io :as io]
             [ring.util.response :as r]
             [compojure.route :as route]
@@ -30,10 +31,16 @@
 (defroutes sark-routes
   ;; Front page
   (GET "/" [] (io/resource "web/index.html"))
+
   ;; Return search results
   (GET "/s" {{q "q"} :query-params}
        (if-not (empty? q) (sark/search @sark/index q)
                nil-resp))
+
+  ;; Record clickthrough
+  (PUT "/c" {{d "d"} :query-params}
+       (do (meters/click! d)
+           nil-resp))
 
   ;; Stats
   (GET "/stats" [] (r/response (sark/stats))))
