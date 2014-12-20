@@ -22,10 +22,15 @@
 (def ^:constant nil-resp (r/response []))
 
 (defroutes sark-routes
+  ;; Front page
+  (GET "/" [] (io/resource "web/index.html"))
+  ;; Return search results
   (GET "/s" {{q "q"} :query-params}
        (if-not (empty? q) (sark/search @sark/index q)
-         nil-resp))
-  (GET "/" [] (io/resource "web/index.html")))
+               nil-resp))
+
+  ;; Stats
+  (GET "/stats" [] (r/response (sark/stats))))
 
 (def handler
   (-> sark-routes

@@ -1,14 +1,20 @@
 0;; -*- coding: utf-8 -*-
 ;;
-;; © 2013 Ian Eure.
+;; © 2013, 2014 Ian Eure.
 ;; Author: Ian Eure <ieure@simple.com>
 ;;
 (ns sark.core
   (:require [clojure.string :as str]
+            [taoensso.timbre :as log]
             [clucy.core :as clucy]
             [sark.arcarc :as arcarc]
-            [sark.analyzer :as anal])
-  (:import [org.apache.lucene.queryparser.classic ParseException]))
+            [sark.analyzer :as anal]
+            [sark.meters :as meters])
+  (:import [org.apache.lucene.queryparser.classic ParseException]
+           [org.apache.lucene.index DirectoryReader]
+           [org.apache.lucene.store Directory]))
+
+(def ^:const update-interval (* 60 60 24 1000)) ; 24hb
 
 (def index (atom nil))
 
@@ -70,16 +76,37 @@
        (apply clucy/add i (map make-doc (remove shitpost? names))))
      i))
 
-(defn init []
-  "Initialize the index."
-  (reset! index (build-index @arcarc/state)))
+(defn update-periodically! []
+  (log/infof "Refreshing index every %dms" update-interval)
+  (doto (Thread. (fn []
+                   (let [[updated state] (arcarc/do-update)]
+                     (when updated
+                       (log/info "Reindexing")
+                       (reset! arcarc/state state)
+                       (reset! index (build-index (:files state)))))
+                   (Thread/sleep update-interval)
+                   (recur)))
+    (.setDaemon true)
+    (.start)))
+
+(defn init [] "Initialize Sark."
+  (arcarc/load-cache!)
+  (update-periodically!))
 
 (defn search [index terms & [limit]]
-  (anal/with-standard-analyzer
-    (clucy/search index terms (or limit 100)
-                  :default-operator :and)))
+  (anal/with-analyzer anal/search-analyzer
+    (let [res (clucy/search index terms (or limit 100)
+                            :default-operator :and)]
+      (meters/searched! res))))
 
 (defn explain [index terms & [limit]]
   (anal/with-standard-analyzer
     (clucy/search index terms (or limit 100)
                   :default-operator :and :explain true)))
+
+(defn stats []
+  (with-open [r (DirectoryReader/open ^Directory @index)]
+    {:disk {:index-last-updated (:lmd @arcarc/state)
+            :documents (.numDocs r)}
+     :mem (arcarc/status)
+     :searches (meters/stats)}))

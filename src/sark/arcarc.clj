@@ -12,15 +12,17 @@
 (def ^:const base "http://arcarc.xmission.com/")
 (def ^:const source (str base "index.txt"))
 
-(defn update* [req-map]
+(def state (atom {:lmd nil, :files nil}))
+
+(defn- update* [req-map] "Update ArcArc index - internal."
   (let [resp (client/get source req-map)]
-    {:lmd (get-in [:headers "last-modified"] resp)
+    {:lmd (get-in resp [:headers "last-modified"])
      :files (-> resp
                 (:body)
                 (io/reader)
                 (line-seq))}))
 
-(defn update
+(defn update "Update the ArcArc index"
   ([] (update nil))
 
   ([last-modified]
@@ -29,20 +31,29 @@
                       {:headers {"if-modified-since" last-modified}})))))
 
 (defn fetch-local []
+  "Load the local cache of the ArcArc index."
   (let [lmd (slurp (io/resource "index.txt.lmd"))]
-    (log/infof "Loaded initial index with LMD of `%s'" lmd)
+    (log/infof "Loaded cache with LMD of `%s'" lmd)
     {:lmd lmd
      :files (-> (io/resource "index.txt")
                 (io/reader)
                 (line-seq))}))
 
-(defn do-update [{:keys [lmd] :as state}]
-  (try+
-   (let [{:keys [lmd] :as new-state} (update lmd)]
-     (log/infof "Index updated at `%s'" lmd)
-     new-state)
-    (catch [:status 304] _
-      (log/infof "No modifications since `%s; nothing to update." lmd)
-      state)))
+(defn do-update "Refresh the index."
+  ([] (do-update @state))
+  ([{:keys [lmd] :as state}]
+     (try+
+      (let [{:keys [lmd] :as new-state} (update lmd)]
+        (log/infof "index.txt updated at `%s'" lmd)
+        [true new-state])
+      (catch [:status 304] _
+        (log/infof "No modifications since `%s; nothing to update." lmd)
+        [nil state]))))
 
-(def state (agent (fetch-local)))
+(defn load-cache! []
+  (reset! state (fetch-local)))
+
+(defn status []
+  (let [s @state]
+    {:index-last-updated (:lmd s)
+     :documents (count (:files s))}))
