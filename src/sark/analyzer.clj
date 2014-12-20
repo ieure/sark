@@ -95,6 +95,7 @@
    "dkjr" "donkey kong jr",
    "donkey kong jr" "dkjr",
    "donkey kong" "dk",
+   "dk3" "donkey kong 3",
    "jnr" "junior",
    "jr" "junior",
    "junior" "jr",
