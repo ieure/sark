@@ -106,4 +106,5 @@
     {:disk {:index-last-updated (:lmd @arcarc/state)
             :documents (.numDocs r)}
      :mem (arcarc/status)
-     :searches (meters/stats)}))
+     :searches (meters/stats)
+     :clicks @meters/clicked}))
