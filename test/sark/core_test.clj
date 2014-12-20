@@ -1,6 +1,12 @@
 ;; -*- coding: utf-8 -*-
 ;;
-;; © 2013 Ian Eure.
+;; eeeee eeeee eeeee  e   e
+;; 8   " 8   8 8   8  8   8
+;; 8eeee 8eee8 8eee8e 8eee8e
+;;    88 88  8 88   8 88   8
+;; 8ee88 88  8 88   8 88   8
+;;
+;; © 2013, 2014 Ian Eure.
 ;; Author: Ian Eure <ian.eure@gmail.com>
 ;;
 (ns sark.core-test

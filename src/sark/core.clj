@@ -1,4 +1,10 @@
-0;; -*- coding: utf-8 -*-
+;; -*- coding: utf-8 -*-
+;;
+;; eeeee eeeee eeeee  e   e
+;; 8   " 8   8 8   8  8   8
+;; 8eeee 8eee8 8eee8e 8eee8e
+;;    88 88  8 88   8 88   8
+;; 8ee88 88  8 88   8 88   8
 ;;
 ;; © 2013, 2014 Ian Eure.
 ;; Author: Ian Eure <ieure@simple.com>
