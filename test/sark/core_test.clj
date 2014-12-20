@@ -46,22 +46,22 @@
     (let [i (anal/with-synonyms {"dp" "schematic"
                                  "tm" "manual"}
               (sark/build-index inames))]
-      (is (re-matches #".*Tempest DP.*"
+      (is (re-find #"Tempest DP"
                       (:name (first (sark/explain i "tempest schematic")))))))
 
   (testing "Searching for schematics with the default analyzer works."
     (let [i (anal/with-standard-analyzer
               (sark/build-index inames))
           res (sark/explain i "tempest schematic")]
-      (is (re-matches #".*Tempest DP.*" (or (:name (first res)) "")))))
+      (is (re-find #"Tempest DP" (or (:name (first res)) "")))))
 
   (testing "Searching for schematics in the default index works"
-    (sark/init)
     (let [res (sark/search @sark/index "tempest schematic")]
-      (is (re-matches #".*Tempest DP.*" (or (:name (first res)) "")))))
+      (is (re-find #"Tempest DP" (or (:name (first res)) "")))))
 
   (testing "Searching for `dk manual' returns donkey kong hits"
-    (sark/init)
     (let [res (sark/search @sark/index "dk manual")]
-      (pprint res)
-      (is (re-matches #".*donkey kong.*" (or (:name (first res)) ""))))))
+      (is (re-find #"(?i)donkey kong" (or (:name (first res)) ""))))))
+
+;; Init once
+(sark/init-cache!)
