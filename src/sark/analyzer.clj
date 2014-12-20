@@ -143,14 +143,10 @@
 
 (def standard-analyzer (make-analyzer))
 
-(defmacro with-analyzer [analyzer & body]
+(defmacro with-any-analyzer [analyzer & body]
   `(binding [clucy/*analyzer* ~analyzer]
      ~@body))
 
-(defmacro with-synonyms [nyms & body]
-  `(with-analyzer (make-analyzer (make-syn-map ~nyms))
-     ~@body))
-
-(defmacro with-standard-analyzer [& body]
-  `(with-analyzer standard-analyzer
+(defmacro with-analyzer [& body]
+  `(with-any-analyzer standard-analyzer
      ~@body))

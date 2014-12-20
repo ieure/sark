@@ -69,7 +69,7 @@
   ([names] (build-index (clucy/memory-index) names))
 
   ([i names]
-     (anal/with-standard-analyzer
+     (anal/with-analyzer
        (apply clucy/add i (map make-doc (remove shitpost? names))))
      i))
 
@@ -86,18 +86,21 @@
     (.setDaemon true)
     (.start)))
 
+(defn init-cache! []
+  (reset! index (build-index (:files (arcarc/load-cache!)))))
+
 (defn init [] "Initialize Sark."
-  (arcarc/load-cache!)
+  (init-cache!)
   (update-periodically!))
 
 (defn search [index terms & [limit]]
-  (anal/with-analyzer anal/search-analyzer
+  (anal/with-analyzer
     (let [res (clucy/search index terms (or limit 100)
                             :default-operator :and)]
       (meters/searched! res))))
 
 (defn explain [index terms & [limit]]
-  (anal/with-standard-analyzer
+  (anal/with-analyzer
     (clucy/search index terms (or limit 100)
                   :default-operator :and :explain true)))
 
