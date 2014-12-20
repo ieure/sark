@@ -6,7 +6,7 @@
 (ns sark.arcarc
   (:require [clj-http.client :as client]
             [clojure.java.io :as io]
-            [clojure.tools.logging :as log])
+            [taoensso.timbre :as log])
   (:use [slingshot.slingshot]))
 
 (def ^:const base "http://arcarc.xmission.com/")
