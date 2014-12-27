@@ -73,16 +73,16 @@
        (apply clucy/add i (map make-doc (remove shitpost? names))))
      i))
 
+(defn update! []
+  (let [[updated state] (arcarc/do-update)]
+    (when updated
+      (log/info "Reindexing")
+      (reset! arcarc/state state)
+      (reset! index (build-index (:files state))))))
+
 (defn update-periodically! []
   (log/infof "Refreshing index every %dms" update-interval)
-  (doto (Thread. (fn []
-                   (let [[updated state] (arcarc/do-update)]
-                     (when updated
-                       (log/info "Reindexing")
-                       (reset! arcarc/state state)
-                       (reset! index (build-index (:files state)))))
-                   (Thread/sleep update-interval)
-                   (recur)))
+  (doto (Thread. update!)
     (.setDaemon true)
     (.start)))
 
@@ -91,7 +91,7 @@
 
 (defn init [] "Initialize Sark."
   (init-cache!)
-  (update-periodically!))
+  (update!))
 
 (defn search [index terms & [limit]]
   (anal/with-analyzer
