@@ -6,7 +6,7 @@
 ;;    88 88  8 88   8 88   8
 ;; 8ee88 88  8 88   8 88   8
 ;;
-;; © 2013, 2014 Ian Eure.
+;; © 2013, 2014, 2020 Ian Eure.
 ;; Author: Ian Eure <ieure@simple.com>
 ;;
 (ns sark.core
@@ -74,11 +74,10 @@
      i))
 
 (defn update! []
-  (let [[updated state] (arcarc/do-update)]
-    (when updated
-      (log/info "Reindexing")
-      (reset! arcarc/state state)
-      (reset! index (build-index (:files state))))))
+  (when-let [updated-state (arcarc/fetch-update)]
+    (log/info "Reindexing")
+    (reset! arcarc/state updated-state)
+    (reset! index (build-index (:files updated-state)))))
 
 (defn update-periodically! []
   (log/infof "Refreshing index every %dms" update-interval)

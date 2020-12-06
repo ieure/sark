@@ -6,35 +6,29 @@
 ;;    88 88  8 88   8 88   8
 ;; 8ee88 88  8 88   8 88   8
 ;;
-;; © 2013, 2014 Ian Eure.
+;; © 2013, 2014, 2020 Ian Eure.
 ;; Author: Ian Eure <ian.eure@gmail.com>
 ;;
 (ns sark.arcarc
   (:require [clj-http.client :as client]
             [clojure.java.io :as io]
-            [taoensso.timbre :as log])
-  (:use [slingshot.slingshot]))
+            [taoensso.timbre :as log]))
 
 (def ^:const base "http://arcarc.xmission.com/")
 (def ^:const source (str base "index.txt"))
 
 (def state (atom {:lmd nil, :files nil}))
 
-(defn- update* [req-map] "Update ArcArc index - internal."
-  (let [resp (client/get source req-map)]
-    {:lmd (get-in resp [:headers "last-modified"])
-     :files (-> resp
-                (:body)
-                (io/reader)
-                (line-seq))}))
-
-(defn update "Update the ArcArc index"
-  ([] (update nil))
-
-  ([last-modified]
-     (update* (conj {:as :stream}
-                    (when-not (nil? last-modified)
-                      {:headers {"if-modified-since" last-modified}})))))
+(defn fetch-update "Update ArcArc index."
+  ([] (fetch-update (:lmd @state)))
+  ([lmd]
+   (let [{:keys [status body],
+          {:strs [Date Last-Modified]} :headers}
+         (client/get source {:as :stream, :headers {"if-modified-since" lmd}}),]
+     (log/infof "Status %d, last remote update at `%s'" status (or Last-Modified Date))
+     (when-not (= 304 status)
+       {:lmd Last-Modified
+        :files (line-seq (io/reader body))}))))
 
 (defn fetch-local []
   "Load the local cache of the ArcArc index."
@@ -44,17 +38,6 @@
      :files (-> (io/resource "index.txt")
                 (io/reader)
                 (line-seq))}))
-
-(defn do-update "Refresh the index."
-  ([] (do-update @state))
-  ([{:keys [lmd] :as state}]
-     (try+
-      (let [{:keys [lmd] :as new-state} (update lmd)]
-        (log/infof "index.txt updated at `%s'" lmd)
-        [true new-state])
-      (catch [:status 304] _
-        (log/infof "No modifications since `%s; nothing to update." lmd)
-        [nil state]))))
 
 (defn load-cache! []
   (reset! state (fetch-local)))
