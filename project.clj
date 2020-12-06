@@ -1,4 +1,4 @@
-(defproject sark "beta3-SNAPSHOT"
+(defproject sark "1.0.0"
   :min-lein-version "2.0.0"
   :description "Sark, the searchable Arcade Archive"
   :url "http://github.com/ieure/sark"
@@ -13,8 +13,8 @@
                  [ring/ring-jetty-adapter "1.8.2"]
                  [metrics-clojure "2.10.0"]]
   :aot :all
-  :jvm-opts ["-Djava.awt.headless=true"] ; Fuk u osx
   :plugins [[lein-ring "0.12.5"]]
+  :jvm-opts ["-Djava.awt.headless=true"]
   :ring {:handler sark.api/handler
          :war-resources "resources"
          :init sark.core/init
